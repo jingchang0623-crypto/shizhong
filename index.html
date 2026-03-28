@@ -1,0 +1,846 @@
+<style>
+        /* Apple-inspired Design System */
+        :root {
+            --apple-bg: #fbfbfd;
+            --apple-dark: #1d1d1f;
+            --apple-gray: #86868b;
+            --apple-highlight: #0071e3;
+            --apple-highlight-hover: #0077ed;
+            --apple-section-bg: #f5f5f7;
+            --spacing-xl: 120px;
+            --spacing-lg: 80px;
+            --spacing-md: 40px;
+            --spacing-sm: 20px;
+            --radius: 14px;
+            --shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: var(--apple-bg);
+            color: var(--apple-dark);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-sm);
+        }
+        
+        .narrow-container {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-sm);
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+        }
+        
+        h1 {
+            font-size: 56px;
+            line-height: 1.07;
+            letter-spacing: -0.005em;
+        }
+        
+        h2 {
+            font-size: 48px;
+            line-height: 1.1;
+            letter-spacing: -0.003em;
+        }
+        
+        h3 {
+            font-size: 28px;
+            line-height: 1.14;
+        }
+        
+        h4 {
+            font-size: 24px;
+            line-height: 1.16;
+        }
+        
+        p {
+            font-size: 17px;
+            line-height: 1.47;
+        }
+        
+        .large-text {
+            font-size: 21px;
+            line-height: 1.38;
+        }
+        
+        .small-text {
+            font-size: 14px;
+            line-height: 1.42;
+        }
+        
+        /* Header */
+        .hero {
+            min-height: 50vh; /* 将高度减少一半 */
+            padding: var(--spacing-xl) 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+            background-color: #f5f5f7;
+        }
+        
+        .hero-layout {
+            display: flex;
+            align-items: center;
+            flex-direction: row-reverse; /* 调整顺序，让照片在左边 */
+            justify-content: space-between;
+            gap: var(--spacing-lg);
+            width: 100%;
+        }
+        
+        /* 响应式布局调整 */
+        @media (max-width: 980px) {
+            .hero-layout {
+                flex-direction: column; /* 在移动端保持上下布局 */
+                gap: var(--spacing-md);
+            }
+            
+            .hero {
+                min-height: auto; /* 移动端自适应高度 */
+                padding: var(--spacing-lg) 0;
+            }
+        }
+        
+        .profile-image {
+            width: 300px;
+            height: 300px;
+            border-radius: var(--radius);
+            object-fit: cover;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+        
+        .profile-image:hover {
+            transform: scale(1.02);
+        }
+        
+        /* 修改 hero-content 样式，使文字左对齐 */
+        .hero-content {
+            max-width: 700px;
+            z-index: 1;
+            text-align: left;
+        }
+        
+        .hero-desc {
+            margin-bottom: var(--spacing-md);
+            font-size: 21px;
+            font-weight: 400;
+            color: var(--apple-gray);
+            max-width: 600px;
+            margin-left: 0; /* 修改为左对齐 */
+            margin-right: auto;
+        }
+        
+        /* 响应式调整 */
+        @media (max-width: 980px) {
+            .hero-layout {
+                flex-direction: column;
+                gap: var(--spacing-md);
+            }
+            
+            .hero {
+                text-align: center;
+            }
+            
+            .hero-content {
+                text-align: center;
+            }
+            
+            .hero-desc {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .profile-image {
+                width: 250px;
+                height: 250px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .profile-image {
+                width: 200px;
+                height: 200px;
+            }
+        }
+        
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 44px;
+            background: rgba(251, 251, 253, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .nav-inner {
+            width: 100%;
+            max-width: 980px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 var(--spacing-sm);
+        }
+        
+        .nav-logo {
+            font-weight: 500;
+            font-size: 20px;
+            letter-spacing: -0.01em;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: var(--spacing-sm);
+            font-size: 12px;
+        }
+        
+        .nav-links a {
+            color: var(--apple-gray);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--apple-dark);
+        }
+        
+        .hero-content {
+            max-width: 700px;
+            z-index: 1;
+        }
+        
+        .hero-eyebrow {
+            color: var(--apple-highlight);
+            font-size: 21px;
+            margin-bottom: var(--spacing-sm);
+            font-weight: 600;
+        }
+        
+        .hero-title {
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .hero-subtitle {
+            margin-bottom: var(--spacing-md);
+            font-size: 28px;
+            font-weight: 400;
+            color: var(--apple-gray);
+        }
+        
+        .hero-desc {
+            margin-bottom: var(--spacing-md);
+            font-size: 21px;
+            font-weight: 400;
+            color: var(--apple-gray);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--apple-highlight);
+            color: white;
+            border-radius: 980px;
+            padding: 12px 22px;
+            font-size: 17px;
+            font-weight: 400;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--apple-highlight-hover);
+        }
+        
+        .hero-gradient {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(139, 198, 255, 0.1), transparent 70%);
+        }
+        
+        /* Sections */
+        .section {
+            padding: var(--spacing-lg) 0;
+            position: relative;
+        }
+        
+        .section-alt {
+            background-color: var(--apple-section-bg);
+        }
+        
+        .section-heading {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .section-title {
+            margin-bottom: 16px;
+        }
+        
+        .section-subtitle {
+            color: var(--apple-gray);
+            font-weight: 400;
+            font-size: 24px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Experience Cards */
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .experience-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        }
+        
+        .card-content {
+            padding: var(--spacing-md);
+        }
+        
+        .card-icon {
+            font-size: 40px;
+            color: var(--apple-highlight);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .card-title {
+            margin-bottom: 14px;
+        }
+        
+        .card-position {
+            font-size: 19px;
+            color: var(--apple-gray);
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        
+        .card-period {
+            display: inline-block;
+            font-size: 14px;
+            background-color: var(--apple-section-bg);
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .card-list {
+            list-style-type: none;
+            margin-top: var(--spacing-sm);
+        }
+        
+        .card-list li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 12px;
+            font-size: 17px;
+        }
+        
+        .card-list li:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 8px;
+            height: 8px;
+            background-color: var(--apple-highlight);
+            border-radius: 50%;
+        }
+        
+        .highlight {
+            color: var(--apple-highlight);
+            font-weight: 500;
+        }
+        
+        /* Project Section */
+        .project-container {
+            margin: var(--spacing-md) 0;
+            padding: var(--spacing-md);
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .project-header {
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .company-logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+        
+        .company-logo {
+            width: 150px;
+            height: 100px; /* 调整高度为100px */
+            background-color: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius);
+            transition: transform 0.2s, box-shadow 0.2s;
+            object-fit: contain;
+            padding: 10px;
+            filter: grayscale(100%);
+            opacity: 0.7;
+        }
+        
+        .company-logo:hover {
+            transform: scale(1.05);
+            filter: grayscale(0%); /* 悬停时显示原色 */
+            opacity: 1;
+        }
+        
+        /* Skills Section */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin: var(--spacing-md) 0;
+        }
+        
+        .skill-tag {
+            background-color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 15px;
+            box-shadow: var(--shadow);
+        }
+        
+        /* Stats */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: var(--spacing-md);
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--apple-highlight);
+            margin-bottom: 8px;
+        }
+        
+        .stat-label {
+            font-size: 17px;
+            color: var(--apple-gray);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--apple-section-bg);
+            padding: var(--spacing-md) 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            list-style: none;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .footer-links li {
+            margin: 0 12px;
+        }
+        
+        .footer-links a {
+            color: var(--apple-gray);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--apple-dark);
+        }
+        
+        .copyright {
+            font-size: 12px;
+            color: var(--apple-gray);
+        }
+        
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate {
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+        }
+        
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+        
+        .delay-2 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-3 {
+            animation-delay: 0.3s;
+        }
+        
+        /* Responsive */
+        @media (max-width: 980px) {
+            h1 {
+                font-size: 48px;
+            }
+            
+            h2 {
+                font-size: 40px;
+            }
+            
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            :root {
+                --spacing-xl: 80px;
+                --spacing-lg: 60px;
+                --spacing-md: 30px;
+            }
+            
+            h1 {
+                font-size: 40px;
+            }
+            
+            h2 {
+                font-size: 32px;
+            }
+            
+            h3 {
+                font-size: 24px;
+            }
+            
+            .hero-subtitle {
+                font-size: 24px;
+            }
+            
+            .hero-desc {
+                font-size: 19px;
+            }
+            
+            .large-text {
+                font-size: 19px;
+            }
+            
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            :root {
+                --spacing-xl: 60px;
+                --spacing-lg: 40px;
+                --spacing-md: 24px;
+            }
+            
+            h1 {
+                font-size: 32px;
+            }
+            
+            h2 {
+                font-size: 28px;
+            }
+            
+            .hero-eyebrow {
+                font-size: 17px;
+            }
+            
+            .hero-subtitle {
+                font-size: 21px;
+            }
+            
+            .section-subtitle {
+                font-size: 19px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo" style="text-decoration: none; color: inherit;">诗中，AI产品专家</a>
+            <ul class="nav-links">
+                <li><a href="#expertise">专业领域</a></li>
+                <li><a href="#experience">工作经历</a></li>
+                <li><a href="#projects">项目展示</a></li>
+                <li><a href="#contact">联系方式</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <section class="hero">
+        <div class="hero-gradient"></div>
+        <div class="container">
+            <div class="hero-layout">
+                <div class="hero-content">
+                    <div class="hero-eyebrow animate">AI解决方案专家</div>
+                    <h1 class="hero-title animate delay-1">陈京昌（诗中）</h1>
+                    <div class="hero-subtitle animate delay-2">深耕AI产品化 · 17年产品设计经验</div>
+                    <p class="hero-desc animate delay-3">专注AI驱动的企业级解决方案设计，擅长将前沿技术转化为可落地的产品能力。历任钉钉、支付宝创新产品负责人，曾任浙江大学智能设计中心副主任、造物云AI创始人。</p>
+                    <a href="#contact" class="cta-button animate delay-3">了解更多</a>
+                </div>
+                <img src="profile-photo.jpg" alt="陈京昌个人照片" class="profile-image animate delay-1">
+            </div>
+        </div>
+    </section>
+    
+    <section id="expertise" class="section section-alt">
+        <div class="narrow-container">
+            <div class="section-heading">
+                <h2 class="section-title">专业领域</h2>
+                <p class="section-subtitle">17年来，我专注于将前沿AI技术转化为实际应用，服务过政府、世界500强企业及头部平台</p>
+            </div>
+            
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">企业客户</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">17</div>
+                    <div class="stat-label">产品设计经验</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">40%</div>
+                    <div class="stat-label">设计效率提升</div>
+                </div>
+            </div>
+            
+            <div class="skills-container">
+                <div class="skill-tag">AI产品化</div>
+                <div class="skill-tag">生成式设计</div>
+                <div class="skill-tag">多模态大模型</div>
+                <div class="skill-tag">企业级解决方案</div>
+                <div class="skill-tag">产品创新</div>
+                <div class="skill-tag">智能办公</div>
+                <div class="skill-tag">政务大数据</div>
+                <div class="skill-tag">AI营销应用</div>
+                <div class="skill-tag">工业设计智能化</div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="experience" class="section">
+        <div class="container">
+            <div class="section-heading">
+                <h2 class="section-title">核心能力与项目经验</h2>
+                <p class="section-subtitle">深度参与AI技术在工业设计、营销数字化等场景的工程化实践</p>
+            </div>
+            
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <div class="card-content">
+                        <div class="card-icon"><i class="fas fa-robot"></i></div>
+                        <h3 class="card-title">AI产品化能力</h3>
+                        <div class="card-position">造物云AI联合创始人</div>
+                        <div class="card-period">2021-2024</div>
+                        <ul class="card-list">
+                            <li>自主研发AI生成式设计引擎，集成多模态大模型与参数化设计技术</li>
+                            <li>支持<span class="highlight">家电、家居、快消品</span>行业的设计自动化</li>
+                            <li>为<span class="highlight">海尔、星巴克、顾家家居</span>等企业提供技术底座</li>
+                            <li>与<span class="highlight">京东、淘宝</span>共建AI营销应用，设计效率提升40%</li>
+                            <li>技术成果获中国工业设计协会创新推荐，服务超100家企业客户</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="experience-card">
+                    <div class="card-content">
+                        <div class="card-icon"><i class="fas fa-building"></i></div>
+                        <h3 class="card-title">大型企业产品创新落地</h3>
+                        <div class="card-position">钉钉智能办公应用平台</div>
+                        <div class="card-period">2015-2019</div>
+                        <ul class="card-list">
+                            <li>主导钉钉电话、视频会议、直播、智能文档、企业邮箱等产品</li>
+                            <li>负责浙政钉项目，推动政务数字化转型</li>
+                            <li>对接联通、金山WPS等合作伙伴协同打造企业办公软件</li>
+                        </ul>
+                        <div class="card-position">支付宝智能服务中台</div>
+                        <div class="card-period">2013-2015</div>
+                        <ul class="card-list">
+                            <li>搭建智能服务，通过打造AI在线和电话服务</li>
+                            <li>分流50万/天的服务咨询量，提升客服效率</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="experience-card">
+                    <div class="card-content">
+                        <div class="card-icon"><i class="fas fa-university"></i></div>
+                        <h3 class="card-title">政府与产业技术创新</h3>
+                        <div class="card-position">每日互动政务大数据系统</div>
+                        <div class="card-period">2019-2020</div>
+                        <ul class="card-list">
+                            <li>主导政府大数据分析项目的落地和迭代</li>
+                            <li>实现营收30%的增长，为政府决策提供数据支持</li>
+                        </ul>
+                        <div class="card-position">浙江大学产品创新智能设计中心</div>
+                        <ul class="card-list">
+                            <li>主导AI工业设计平台研发，融合生成式AI与制造知识图谱</li>
+                            <li>对接义乌小商品产业带实现设计产能标准化</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="projects" class="section section-alt">
+        <div class="narrow-container">
+            <div class="section-heading">
+                <h2 class="section-title">服务企业</h2>
+                <p class="section-subtitle">深度服务政府、世界500强企业及头部平台</p>
+            </div>
+            
+            <div class="company-logos">
+                <img src="logos/haier.png" alt="海尔" class="company-logo" />
+                <img src="logos/jd.png" alt="京东" class="company-logo" />
+                <img src="logos/dingtalk.png" alt="钉钉" class="company-logo" />
+                <img src="logos/alipay.png" alt="支付宝" class="company-logo" />
+                <img src="logos/zju.png" alt="浙江大学" class="company-logo" />
+                <img src="logos/gujia.png" alt="顾家家居" class="company-logo" />
+                <img src="logos/starbucks.png" alt="星巴克" class="company-logo" />
+                <img src="logos/taobao.png" alt="淘宝" class="company-logo" />
+            </div>
+            
+            <div class="project-container">
+                <div class="project-header">
+                    <h3>代表项目：AI生成式设计引擎</h3>
+                </div>
+                <p class="large-text">
+                    集成多模态大模型与参数化设计技术，为企业客户提供设计自动化解决方案，包括家电外观设计、营销素材批量生成、3D空间适配等应用场景。该技术显著提升了企业设计效率，降低了素材制作成本，获得中国工业设计协会创新推荐。
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact" class="section">
+        <div class="narrow-container">
+            <div class="section-heading">
+                <h2 class="section-title">联系我</h2>
+                <p class="section-subtitle">对AI产品化、企业级解决方案设计或多模态大模型应用有任何疑问，欢迎联系</p>
+            </div>
+            
+            <div style="text-align: center;">
+                <img src="images/wechat-qr.jpg" alt="微信二维码" style="width: 200px; height: 200px; border-radius: var(--radius); box-shadow: var(--shadow);">
+                <p style="margin-top: var(--spacing-sm); color: var(--apple-gray);">扫码添加微信</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="narrow-container">
+            <div class="footer-content">
+                <ul class="footer-links">
+                    <li><a href="#expertise">专业领域</a></li>
+                    <li><a href="#experience">工作经历</a></li>
+                    <li><a href="#projects">项目展示</a></li>
+                    <li><a href="#contact">联系方式</a></li>
+                </ul>
+                <div class="copyright">© 2025 陈京昌（诗中） | AI解决方案与产品专家</div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Simple animation for elements as they enter the viewport
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('.experience-card, .stat-card, .project-container').forEach(el => {
+                el.style.opacity = 0;
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
