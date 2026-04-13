@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+    <title>LLM知识库系统 - AI实践 - 诗中</title>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="../" class="nav-logo">诗中，AI产品专家</a>
+            <ul class="nav-links">
+                <li><a href="../#ai-practice">AI实践</a></li>
+                <li><a href="../#case-studies">案例研究</a></li>
+                <li><a href="../#tools">工具推荐</a></li>
+                <li><a href="../#contact">联系方式</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <header class="article-header">
+            <div class="article-meta">
+                <span>📅 2026-04-13</span>
+                <span>#LLM #知识管理 #Karpathy</span>
+            </div>
+            <h1 class="article-title">LLM 知识库系统</h1>
+            <p class="article-subtitle">基于 Karpathy 方法论的个人知识管理，四层架构自动编译。你几乎从不手动编写或编辑 wiki，那是 LLM 的地盘。</p>
+        </header>
+        
+        <article class="article-content">
+            <h2>核心理念</h2>
+            <p>用 LLM 为各种研究主题建立个人知识库，近期 token 消耗从写代码转向处理知识（Markdown + 图片），最新 LLM 在这件事上表现相当好。</p>
+            <blockquote>"收集多个来源的原始数据 → LLM 编译成 .md wiki → 通过 CLI 工具做问答并逐步增强 wiki → 全部在 Obsidian 中可视化。你几乎从不手动编写或编辑 wiki，那是 LLM 的地盘。"</blockquote>
+            
+            <h2>四层架构</h2>
+            
+            <h3>1️⃣ 数据摄取（Data Ingest）</h3>
+            <p>原始数据来源：</p>
+            <ul>
+                <li>文章、论文、仓库、数据集、图片 → raw/ 目录</li>
+                <li>Obsidian Web Clipper（网页→MD）+ 快捷键下载图片</li>
+                <li>微信文章抓取入库</li>
+                <li>飞书文档提取</li>
+            </ul>
+            
+            <h3>2️⃣ Wiki编译（LLM-Compiled Wiki）</h3>
+            <p>内容构成：</p>
+            <ul>
+                <li>摘要、反向链接、概念分类</li>
+                <li>专题文章、交叉链接</li>
+                <li>wiki/index.md 索引</li>
+                <li>wiki/summary.md 摘要汇总</li>
+            </ul>
+            <p><strong>关键</strong>：完全由 LLM 自动维护，人类几乎不碰。</p>
+            
+            <h3>3️⃣ 可视化前端（IDE：Obsidian）</h3>
+            <p>Obsidian 作为"前端IDE"，配合插件：</p>
+            <ul>
+                <li>Marp（幻灯片）</li>
+                <li>Graph View（知识图谱）</li>
+                <li>Dataview（数据查询）</li>
+            </ul>
+            
+            <h3>4️⃣ Q&A与输出（Querying & Output）</h3>
+            <p>触发条件：~100篇文章、~40万词</p>
+            <p>输出形式：</p>
+            <ul>
+                <li>Markdown 文档</li>
+                <li>Marp 幻灯片</li>
+                <li>matplotlib 图表</li>
+                <li>公众号草稿</li>
+            </ul>
+            <p><strong>归档</strong>：输出"归档"回Wiki，形成增强循环。</p>
+            
+            <h2>进阶功能</h2>
+            
+            <h3>🔑 无需复杂RAG</h3>
+            <ul>
+                <li>LLM 自动维护索引文件和文档摘要</li>
+                <li>~100篇/40万字规模下，直接让 LLM 读全部内容效果足够好</li>
+                <li>洞察：并非所有场景都需要 RAG</li>
+            </ul>
+            
+            <h3>🧹 健康检查（Linting）</h3>
+            <ul>
+                <li>发现数据不一致</li>
+                <li>填补缺失信息（配合网络搜索）</li>
+                <li>挖掘概念关联，提出新文章候选</li>
+                <li>LLM 主动建议值得探究的问题方向</li>
+            </ul>
+            
+            <h2>当前规模</h2>
+            <div class="stats-row">
+                <div class="stat-item">
+                    <div class="stat-value">15+</div>
+                    <div class="stat-label">原始文档</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">6</div>
+                    <div class="stat-label">主题Wiki</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">~15%</div>
+                    <div class="stat-label">规模进度</div>
+                </div>
+            </div>
+            <p>目标：100篇原始文档 / ~40万词</p>
+            
+            <h2>工作流程</h2>
+            <ol>
+                <li><strong>你给输入</strong> → 我保存到 raw/</li>
+                <li><strong>我自动编译</strong> → 更新 wiki/</li>
+                <li><strong>你问问题</strong> → 我基于 wiki 回答</li>
+                <li><strong>你要求输出</strong> → 我生成公众号草稿并发布</li>
+            </ol>
+            
+            <h2>反馈闭环</h2>
+            <p>每次输出后询问：</p>
+            <ol>
+                <li>要不要把它创建飞书文档？</li>
+                <li>对这个结果的满意度怎么样？</li>
+            </ol>
+            <p>根据用户反馈更新 user-preferences.md，影响后续输出风格。</p>
+            
+            <a href="../#ai-practice" class="back-btn">← 返回AI实践</a>
+        </article>
+        
+        <footer class="article-footer">
+            <p>© 2025 陈京昌（诗中）| 来源：知识库</p>
+        </footer>
+    </div>
+</body>
+</html>

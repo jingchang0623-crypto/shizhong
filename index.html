@@ -863,62 +863,21 @@
                 <p class="section-subtitle">基于 OpenClaw 构建的多 Agent 协作系统，从知识管理到内容运营的全链路实践</p>
             </div>
             <div class="card-grid card-grid-3">
-                <div class="content-card" onclick="toggleDetail('agent-team-detail')">
+                <a href="pages/practice-agent-team.html" class="content-card" style="text-decoration:none;color:inherit;">
                     <div class="card-icon">🤖</div>
                     <div class="card-title-small">5-Agent 团队架构</div>
                     <div class="card-desc">基于 OpenClaw 的多 Agent 协作系统，各自独立、互相配合</div>
-                </div>
-                <div class="content-card" onclick="toggleDetail('kb-detail')">
+                </a>
+                <a href="pages/practice-knowledge-base.html" class="content-card" style="text-decoration:none;color:inherit;">
                     <div class="card-icon">📚</div>
                     <div class="card-title-small">LLM 知识库系统</div>
                     <div class="card-desc">基于 Karpathy 方法论的个人知识管理，四层架构自动编译</div>
-                </div>
-                <div class="content-card" onclick="toggleDetail('toolchain-detail')">
+                </a>
+                <a href="pages/practice-toolchain.html" class="content-card" style="text-decoration:none;color:inherit;">
                     <div class="card-icon">⚡</div>
                     <div class="card-title-small">Agent 工具链</div>
                     <div class="card-desc">30+ 跨平台技能矩阵，定时任务驱动运营闭环</div>
-                </div>
-            </div>
-            <div id="agent-team-detail" class="detail-content">
-                <h4>🏗️ 团队架构</h4>
-                <ul>
-                    <li><strong>特别助理</strong>：中央协调，统筹全局</li>
-                    <li><strong>HR大姐头</strong>：Agent 招聘与管理</li>
-                    <li><strong>知识管家</strong>：信息整理与观点库维护</li>
-                    <li><strong>妙趣AI</strong>：miaoquai.com 网站运营</li>
-                    <li><strong>PR</strong>：个人品牌建设与内容运营</li>
-                </ul>
-                <h4>🔄 协作机制</h4>
-                <ul>
-                    <li>每日 09:00 定时执行项目进度检查</li>
-                    <li>飞书群 × OpenClaw × 扣子 Coze 三位一体</li>
-                    <li>30+ 跨平台技能矩阵工业化运维</li>
-                </ul>
-            </div>
-            <div id="kb-detail" class="detail-content">
-                <h4>📐 四层架构</h4>
-                <ul>
-                    <li><strong>数据摄取</strong> (raw/)：接收原始输入</li>
-                    <li><strong>Wiki编译</strong> (wiki/)：LLM 自动提炼结构化知识</li>
-                    <li><strong>IDE前端</strong> (ide/)：Obsidian 可视化浏览</li>
-                    <li><strong>Q&A输出</strong> (qa/)：问答和公众号草稿生成</li>
-                </ul>
-                <blockquote>"~100篇/40万字规模下无需RAG，直接让 LLM 读全部内容效果足够好。" —— Karpathy</blockquote>
-                <h4>📊 当前规模</h4>
-                <div class="stats-row">
-                    <div class="stat-item"><div class="stat-value">15+</div><div class="stat-label">原始文档</div></div>
-                    <div class="stat-item"><div class="stat-value">6</div><div class="stat-label">主题Wiki</div></div>
-                    <div class="stat-item"><div class="stat-value">~15%</div><div class="stat-label">规模进度</div></div>
-                </div>
-            </div>
-            <div id="toolchain-detail" class="detail-content">
-                <h4>🔧 核心工具</h4>
-                <ul>
-                    <li><strong>OpenClaw</strong>：AI Agent 平台，5-Agent 团队底座</li>
-                    <li><strong>扣子 Coze</strong>：智能体开发，Agent World 生态</li>
-                    <li><strong>Claude Code</strong>：AI 编程，自然语言写代码</li>
-                    <li><strong>Obsidian</strong>：知识库可视化前端 IDE</li>
-                </ul>
+                </a>
             </div>
         </div>
     </section>
@@ -936,27 +895,7 @@
                     <div class="case-meta"><span>📖 8分钟阅读</span><span>2026-04-13</span></div>
                 </div>
                 <p class="case-preview">Jonathan Chan，前波士顿咨询高管，25年职场经验。辞去42万美元年薪，8个月后靠 AI 月入3万美元。</p>
-                <span class="expand-btn" onclick="toggleDetail('case1-detail')">展开详情 →</span>
-                <div id="case1-detail" class="detail-content">
-                    <h4>👤 人物背景</h4>
-                    <p>Jonathan Chan，前波士顿咨询、Westpac 及多家顶尖金融科技公司高管，25年职场经验，曾指挥200人团队。</p>
-                    <h4>📊 转型数据</h4>
-                    <div class="stats-row">
-                        <div class="stat-item"><div class="stat-value">$42万</div><div class="stat-label">原年薪</div></div>
-                        <div class="stat-item"><div class="stat-value">8个月</div><div class="stat-label">转型时间</div></div>
-                        <div class="stat-item"><div class="stat-value">$3万</div><div class="stat-label">当前月收入</div></div>
-                    </div>
-                    <h4>💼 创业项目</h4>
-                    <p><strong>AI Never Sleeps</strong>：个人教育品牌，月营收2万美元。Zero to Builder 八周实战课（2999美元）+ 付费社群（59美元/月）。</p>
-                    <p><strong>Pear</strong>：AI咨询平台，上线3周月交易额突破10万美元。</p>
-                    <h4>🛠️ 技术栈</h4>
-                    <ul>
-                        <li><strong>Cursor + Claude Code</strong>：AI 编程，自然语言写代码</li>
-                        <li><strong>Vercel</strong>：前端页面托管</li>
-                        <li><strong>n8n</strong>：100+ 自动化流程</li>
-                    </ul>
-                    <blockquote>"AI已经把开发周期压缩到极致，以前团队3个月的活，现在懂行的人3天就能跑通。"</blockquote>
-                </div>
+                <a href="pages/case-jonathan-chan.html" class="expand-btn">阅读全文 →</a>
             </div>
             <div class="case-card">
                 <div class="case-header">
@@ -964,16 +903,7 @@
                     <div class="case-meta"><span>📖 10分钟阅读</span><span>2026-04-13</span></div>
                 </div>
                 <p class="case-preview">扣子 2.5 发布，为 Agent 配备完整数字生活设施——云电脑、云手机、邮箱、日程、视频生成……</p>
-                <span class="expand-btn" onclick="toggleDetail('case2-detail')">展开详情 →</span>
-                <div id="case2-detail" class="detail-content">
-                    <h4>🖥️ 云电脑</h4>
-                    <p>配置：Ubuntu 22.04，2核CPU，4G内存。能力：浏览器操作、后台任务、自动登录。可以部署各种服务。</p>
-                    <h4>📱 云手机</h4>
-                    <p>配置：Android 13，2vCPU，6GB内存。能力：刷小红书微博、安装任何 APP、后台运行。</p>
-                    <h4>🎬 视频Agent</h4>
-                    <p>全流程自动：剧本→分镜→画面→音乐。支持字节 Seedance 2.0，高达80集系列作品。</p>
-                    <blockquote>"大多数还在想'怎么让AI更聪明'，扣子已经在想'怎么让AI活起来'。"</blockquote>
-                </div>
+                <a href="pages/case-coze-agent-world.html" class="expand-btn">阅读全文 →</a>
             </div>
             <div class="case-card">
                 <div class="case-header">
@@ -981,21 +911,7 @@
                     <div class="case-meta"><span>📖 6分钟阅读</span><span>2026-04-13</span></div>
                 </div>
                 <p class="case-preview">卡通小人在屏幕里疯狂鞠躬道歉，卖9块9，闷声卖了几千单。看似荒谬的小需求，凭什么能成为一门好生意？</p>
-                <span class="expand-btn" onclick="toggleDetail('case3-detail')">展开详情 →</span>
-                <div id="case3-detail" class="detail-content">
-                    <h4>🎯 核心痛点</h4>
-                    <p>年轻人情侣吵架、闺蜜闹掰，最难的是拉不下脸开口。甩一个链接，点开是滑稽弯腰的"道歉小人"——对方噗嗤一声乐了，有了台阶。</p>
-                    <h4>💰 为什么现在能赚钱</h4>
-                    <p><strong>成本塌方</strong>：三五年前找画师+外包，成本大几千。现在 AI 生成，几句 Prompt，喝杯咖啡功夫出成品。</p>
-                    <h4>📋 4个选品标准</h4>
-                    <ul>
-                        <li><strong>场景要"具体"</strong>：谁、什么时候、急着买它干嘛</li>
-                        <li><strong>交付"拿走即用"</strong>：买完立刻解决此时此刻的麻烦</li>
-                        <li><strong>卡死"无感定价"</strong>：9.9-39.9元，相当于奶茶钱</li>
-                        <li><strong>必须"流水线化"</strong>：5分钟内闭眼交付</li>
-                    </ul>
-                    <blockquote>"大厂看不上、精英懒得做、普通人又觉得不好意思开口的隐秘角落，藏着9块9一单的小金矿。"</blockquote>
-                </div>
+                <a href="pages/case-ai-apology.html" class="expand-btn">阅读全文 →</a>
             </div>
             <div class="case-card">
                 <div class="case-header">
@@ -1003,27 +919,7 @@
                     <div class="case-meta"><span>📖 15分钟阅读</span><span>2026-04-13</span></div>
                 </div>
                 <p class="case-preview">Dan Koe 的一人公司体系：四小时工作制、心智垄断、从0到100万的演进路径。</p>
-                <span class="expand-btn" onclick="toggleDetail('case4-detail')">展开详情 →</span>
-                <div id="case4-detail" class="detail-content">
-                    <h4>🧠 核心理念</h4>
-                    <ul>
-                        <li><strong>你就是最好的利基市场</strong>：You are the Niche</li>
-                        <li><strong>科伊定律</strong>：强迫每天只工作4小时</li>
-                    </ul>
-                    <h4>📈 产品演进</h4>
-                    <ul>
-                        <li>27美元电子书</li>
-                        <li>150美元录播基础课</li>
-                        <li>399-999美元训练营</li>
-                    </ul>
-                    <h4>🎭 PPP框架</h4>
-                    <ul>
-                        <li><strong>Pull（钩子）</strong>：痛点、数字、极端现象</li>
-                        <li><strong>Perspective（视角）</strong>：反共识观点</li>
-                        <li><strong>Punchline（金句）</strong>：精炼隐喻</li>
-                    </ul>
-                    <blockquote>"大多数人会花8个小时为别人的梦想打工，却不愿意花2个小时建立自己的事业。"</blockquote>
-                </div>
+                <a href="pages/case-dan-koe.html" class="expand-btn">阅读全文 →</a>
             </div>
         </div>
     </section>
