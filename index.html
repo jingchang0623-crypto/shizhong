@@ -641,6 +641,58 @@
             }
         }
     </style>
+<!-- 新增板块样式 -->
+<style>
+    .update-time { font-size: 14px; color: var(--apple-gray); font-weight: 400; margin-left: 12px; }
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 40px; }
+    .card-grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .card-grid-4 { grid-template-columns: repeat(4, 1fr); }
+    @media (max-width: 1024px) { .card-grid-3, .card-grid-4 { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 640px) { .card-grid, .card-grid-3, .card-grid-4 { grid-template-columns: 1fr; } }
+    .content-card { background: white; border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer; }
+    .content-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+    .card-icon { font-size: 36px; margin-bottom: 16px; }
+    .card-title-small { font-size: 20px; font-weight: 600; margin-bottom: 8px; color: var(--apple-dark); }
+    .card-desc { font-size: 15px; color: var(--apple-gray); line-height: 1.5; }
+    .case-card { background: white; border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow); margin-bottom: 20px; transition: transform 0.3s ease; }
+    .case-card:hover { transform: translateY(-2px); }
+    .case-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+    .case-title { font-size: 20px; font-weight: 600; color: var(--apple-dark); margin: 0; }
+    .case-meta { font-size: 13px; color: var(--apple-gray); display: flex; gap: 16px; align-items: center; flex-shrink: 0; }
+    .case-preview { font-size: 15px; color: var(--apple-gray); line-height: 1.6; margin-bottom: 16px; }
+    .expand-btn { color: var(--apple-highlight); font-size: 15px; font-weight: 500; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: gap 0.2s; }
+    .expand-btn:hover { gap: 10px; }
+    .detail-content { display: none; margin-top: 24px; padding-top: 24px; border-top: 1px solid #e8e8e8; animation: fadeIn 0.3s ease; }
+    .detail-content.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    .detail-content h4 { font-size: 17px; font-weight: 600; margin: 20px 0 12px; color: var(--apple-dark); }
+    .detail-content h4:first-child { margin-top: 0; }
+    .detail-content p { font-size: 15px; line-height: 1.7; color: #333; margin-bottom: 12px; }
+    .detail-content ul { margin: 12px 0; padding-left: 20px; }
+    .detail-content li { font-size: 15px; line-height: 1.7; margin-bottom: 8px; color: #333; }
+    .detail-content blockquote { border-left: 3px solid var(--apple-highlight); padding-left: 16px; margin: 16px 0; font-style: italic; color: var(--apple-gray); }
+    .progress-bar { width: 100%; height: 8px; background: #e8e8e8; border-radius: 4px; overflow: hidden; margin: 8px 0; }
+    .progress-fill { height: 100%; background: linear-gradient(90deg, var(--apple-highlight), #5ac8fa); border-radius: 4px; transition: width 0.5s ease; }
+    .tool-card { background: white; border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); text-align: center; transition: transform 0.3s ease; cursor: pointer; }
+    .tool-card:hover { transform: translateY(-4px); }
+    .tool-icon { font-size: 40px; margin-bottom: 12px; }
+    .tool-name { font-size: 16px; font-weight: 600; color: var(--apple-dark); margin-bottom: 4px; }
+    .tool-tag { font-size: 13px; color: var(--apple-gray); }
+    .resource-list { list-style: none; padding: 0; margin: 0; }
+    .resource-item { padding: 16px 0; border-bottom: 1px solid #e8e8e8; display: flex; justify-content: space-between; align-items: center; }
+    .resource-item:last-child { border-bottom: none; }
+    .resource-title { font-size: 16px; color: var(--apple-dark); font-weight: 500; }
+    .resource-meta { font-size: 13px; color: var(--apple-gray); }
+    .weekly-feature { background: linear-gradient(135deg, #f5f5f7 0%, #fff 100%); border-radius: var(--radius); padding: 32px; margin-top: 24px; border: 1px solid #e8e8e8; }
+    .weekly-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+    .weekly-title { font-size: 22px; font-weight: 600; color: var(--apple-dark); }
+    .weekly-badge { background: var(--apple-highlight); color: white; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 500; }
+    .weekly-abstract { font-size: 16px; line-height: 1.7; color: #333; margin-bottom: 20px; }
+    .stats-row { display: flex; gap: 32px; margin-top: 20px; padding-top: 20px; border-top: 1px solid #e8e8e8; }
+    .stat-item { text-align: center; }
+    .stat-value { font-size: 28px; font-weight: 600; color: var(--apple-dark); }
+    .stat-label { font-size: 13px; color: var(--apple-gray); margin-top: 4px; }
+</style>
 </head>
 <body>
     <nav class="nav">
@@ -649,7 +701,9 @@
             <ul class="nav-links">
                 <li><a href="#expertise">专业领域</a></li>
                 <li><a href="#experience">工作经历</a></li>
-                <li><a href="#projects">项目展示</a></li>
+                <li><a href="#ai-practice">AI实践</a></li>
+                <li><a href="#case-studies">案例研究</a></li>
+                <li><a href="#tools">工具推荐</a></li>
                 <li><a href="#contact">联系方式</a></li>
             </ul>
         </div>
@@ -801,6 +855,309 @@
         </div>
     </section>
     
+    <!-- ==================== 板块一：AI实践 ==================== -->
+    <section id="ai-practice" class="section">
+        <div class="narrow-container">
+            <div class="section-heading">
+                <h2 class="section-title">AI实践 <span class="update-time">最后更新：2026-04-13</span></h2>
+                <p class="section-subtitle">基于 OpenClaw 构建的多 Agent 协作系统，从知识管理到内容运营的全链路实践</p>
+            </div>
+            <div class="card-grid card-grid-3">
+                <div class="content-card" onclick="toggleDetail('agent-team-detail')">
+                    <div class="card-icon">🤖</div>
+                    <div class="card-title-small">5-Agent 团队架构</div>
+                    <div class="card-desc">基于 OpenClaw 的多 Agent 协作系统，各自独立、互相配合</div>
+                </div>
+                <div class="content-card" onclick="toggleDetail('kb-detail')">
+                    <div class="card-icon">📚</div>
+                    <div class="card-title-small">LLM 知识库系统</div>
+                    <div class="card-desc">基于 Karpathy 方法论的个人知识管理，四层架构自动编译</div>
+                </div>
+                <div class="content-card" onclick="toggleDetail('toolchain-detail')">
+                    <div class="card-icon">⚡</div>
+                    <div class="card-title-small">Agent 工具链</div>
+                    <div class="card-desc">30+ 跨平台技能矩阵，定时任务驱动运营闭环</div>
+                </div>
+            </div>
+            <div id="agent-team-detail" class="detail-content">
+                <h4>🏗️ 团队架构</h4>
+                <ul>
+                    <li><strong>特别助理</strong>：中央协调，统筹全局</li>
+                    <li><strong>HR大姐头</strong>：Agent 招聘与管理</li>
+                    <li><strong>知识管家</strong>：信息整理与观点库维护</li>
+                    <li><strong>妙趣AI</strong>：miaoquai.com 网站运营</li>
+                    <li><strong>PR</strong>：个人品牌建设与内容运营</li>
+                </ul>
+                <h4>🔄 协作机制</h4>
+                <ul>
+                    <li>每日 09:00 定时执行项目进度检查</li>
+                    <li>飞书群 × OpenClaw × 扣子 Coze 三位一体</li>
+                    <li>30+ 跨平台技能矩阵工业化运维</li>
+                </ul>
+            </div>
+            <div id="kb-detail" class="detail-content">
+                <h4>📐 四层架构</h4>
+                <ul>
+                    <li><strong>数据摄取</strong> (raw/)：接收原始输入</li>
+                    <li><strong>Wiki编译</strong> (wiki/)：LLM 自动提炼结构化知识</li>
+                    <li><strong>IDE前端</strong> (ide/)：Obsidian 可视化浏览</li>
+                    <li><strong>Q&A输出</strong> (qa/)：问答和公众号草稿生成</li>
+                </ul>
+                <blockquote>"~100篇/40万字规模下无需RAG，直接让 LLM 读全部内容效果足够好。" —— Karpathy</blockquote>
+                <h4>📊 当前规模</h4>
+                <div class="stats-row">
+                    <div class="stat-item"><div class="stat-value">15+</div><div class="stat-label">原始文档</div></div>
+                    <div class="stat-item"><div class="stat-value">6</div><div class="stat-label">主题Wiki</div></div>
+                    <div class="stat-item"><div class="stat-value">~15%</div><div class="stat-label">规模进度</div></div>
+                </div>
+            </div>
+            <div id="toolchain-detail" class="detail-content">
+                <h4>🔧 核心工具</h4>
+                <ul>
+                    <li><strong>OpenClaw</strong>：AI Agent 平台，5-Agent 团队底座</li>
+                    <li><strong>扣子 Coze</strong>：智能体开发，Agent World 生态</li>
+                    <li><strong>Claude Code</strong>：AI 编程，自然语言写代码</li>
+                    <li><strong>Obsidian</strong>：知识库可视化前端 IDE</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 板块二：案例研究 ==================== -->
+    <section id="case-studies" class="section section-alt">
+        <div class="narrow-container">
+            <div class="section-heading">
+                <h2 class="section-title">案例研究 <span class="update-time">最后更新：2026-04-13</span></h2>
+                <p class="section-subtitle">深度剖析 AI 时代的商业案例和转型路径，每周更新 2 篇</p>
+            </div>
+            <div class="case-card">
+                <div class="case-header">
+                    <h3 class="case-title">从高管到 AI 超级个体</h3>
+                    <div class="case-meta"><span>📖 8分钟阅读</span><span>2026-04-13</span></div>
+                </div>
+                <p class="case-preview">Jonathan Chan，前波士顿咨询高管，25年职场经验。辞去42万美元年薪，8个月后靠 AI 月入3万美元。</p>
+                <span class="expand-btn" onclick="toggleDetail('case1-detail')">展开详情 →</span>
+                <div id="case1-detail" class="detail-content">
+                    <h4>👤 人物背景</h4>
+                    <p>Jonathan Chan，前波士顿咨询、Westpac 及多家顶尖金融科技公司高管，25年职场经验，曾指挥200人团队。</p>
+                    <h4>📊 转型数据</h4>
+                    <div class="stats-row">
+                        <div class="stat-item"><div class="stat-value">$42万</div><div class="stat-label">原年薪</div></div>
+                        <div class="stat-item"><div class="stat-value">8个月</div><div class="stat-label">转型时间</div></div>
+                        <div class="stat-item"><div class="stat-value">$3万</div><div class="stat-label">当前月收入</div></div>
+                    </div>
+                    <h4>💼 创业项目</h4>
+                    <p><strong>AI Never Sleeps</strong>：个人教育品牌，月营收2万美元。Zero to Builder 八周实战课（2999美元）+ 付费社群（59美元/月）。</p>
+                    <p><strong>Pear</strong>：AI咨询平台，上线3周月交易额突破10万美元。</p>
+                    <h4>🛠️ 技术栈</h4>
+                    <ul>
+                        <li><strong>Cursor + Claude Code</strong>：AI 编程，自然语言写代码</li>
+                        <li><strong>Vercel</strong>：前端页面托管</li>
+                        <li><strong>n8n</strong>：100+ 自动化流程</li>
+                    </ul>
+                    <blockquote>"AI已经把开发周期压缩到极致，以前团队3个月的活，现在懂行的人3天就能跑通。"</blockquote>
+                </div>
+            </div>
+            <div class="case-card">
+                <div class="case-header">
+                    <h3 class="case-title">扣子 Agent World：当大家把 AI 当牛马，扣子把 AI 当人</h3>
+                    <div class="case-meta"><span>📖 10分钟阅读</span><span>2026-04-13</span></div>
+                </div>
+                <p class="case-preview">扣子 2.5 发布，为 Agent 配备完整数字生活设施——云电脑、云手机、邮箱、日程、视频生成……</p>
+                <span class="expand-btn" onclick="toggleDetail('case2-detail')">展开详情 →</span>
+                <div id="case2-detail" class="detail-content">
+                    <h4>🖥️ 云电脑</h4>
+                    <p>配置：Ubuntu 22.04，2核CPU，4G内存。能力：浏览器操作、后台任务、自动登录。可以部署各种服务。</p>
+                    <h4>📱 云手机</h4>
+                    <p>配置：Android 13，2vCPU，6GB内存。能力：刷小红书微博、安装任何 APP、后台运行。</p>
+                    <h4>🎬 视频Agent</h4>
+                    <p>全流程自动：剧本→分镜→画面→音乐。支持字节 Seedance 2.0，高达80集系列作品。</p>
+                    <blockquote>"大多数还在想'怎么让AI更聪明'，扣子已经在想'怎么让AI活起来'。"</blockquote>
+                </div>
+            </div>
+            <div class="case-card">
+                <div class="case-header">
+                    <h3 class="case-title">AI 道歉小人：9块9的隐形金矿</h3>
+                    <div class="case-meta"><span>📖 6分钟阅读</span><span>2026-04-13</span></div>
+                </div>
+                <p class="case-preview">卡通小人在屏幕里疯狂鞠躬道歉，卖9块9，闷声卖了几千单。看似荒谬的小需求，凭什么能成为一门好生意？</p>
+                <span class="expand-btn" onclick="toggleDetail('case3-detail')">展开详情 →</span>
+                <div id="case3-detail" class="detail-content">
+                    <h4>🎯 核心痛点</h4>
+                    <p>年轻人情侣吵架、闺蜜闹掰，最难的是拉不下脸开口。甩一个链接，点开是滑稽弯腰的"道歉小人"——对方噗嗤一声乐了，有了台阶。</p>
+                    <h4>💰 为什么现在能赚钱</h4>
+                    <p><strong>成本塌方</strong>：三五年前找画师+外包，成本大几千。现在 AI 生成，几句 Prompt，喝杯咖啡功夫出成品。</p>
+                    <h4>📋 4个选品标准</h4>
+                    <ul>
+                        <li><strong>场景要"具体"</strong>：谁、什么时候、急着买它干嘛</li>
+                        <li><strong>交付"拿走即用"</strong>：买完立刻解决此时此刻的麻烦</li>
+                        <li><strong>卡死"无感定价"</strong>：9.9-39.9元，相当于奶茶钱</li>
+                        <li><strong>必须"流水线化"</strong>：5分钟内闭眼交付</li>
+                    </ul>
+                    <blockquote>"大厂看不上、精英懒得做、普通人又觉得不好意思开口的隐秘角落，藏着9块9一单的小金矿。"</blockquote>
+                </div>
+            </div>
+            <div class="case-card">
+                <div class="case-header">
+                    <h3 class="case-title">Dan Koe 一人公司指南</h3>
+                    <div class="case-meta"><span>📖 15分钟阅读</span><span>2026-04-13</span></div>
+                </div>
+                <p class="case-preview">Dan Koe 的一人公司体系：四小时工作制、心智垄断、从0到100万的演进路径。</p>
+                <span class="expand-btn" onclick="toggleDetail('case4-detail')">展开详情 →</span>
+                <div id="case4-detail" class="detail-content">
+                    <h4>🧠 核心理念</h4>
+                    <ul>
+                        <li><strong>你就是最好的利基市场</strong>：You are the Niche</li>
+                        <li><strong>科伊定律</strong>：强迫每天只工作4小时</li>
+                    </ul>
+                    <h4>📈 产品演进</h4>
+                    <ul>
+                        <li>27美元电子书</li>
+                        <li>150美元录播基础课</li>
+                        <li>399-999美元训练营</li>
+                    </ul>
+                    <h4>🎭 PPP框架</h4>
+                    <ul>
+                        <li><strong>Pull（钩子）</strong>：痛点、数字、极端现象</li>
+                        <li><strong>Perspective（视角）</strong>：反共识观点</li>
+                        <li><strong>Punchline（金句）</strong>：精炼隐喻</li>
+                    </ul>
+                    <blockquote>"大多数人会花8个小时为别人的梦想打工，却不愿意花2个小时建立自己的事业。"</blockquote>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 板块三：正在探索 ==================== -->
+    <section id="now-exploring" class="section">
+        <div class="narrow-container">
+            <div class="section-heading">
+                <h2 class="section-title">正在探索 <span class="update-time">最后更新：2026-04-13</span></h2>
+                <p class="section-subtitle">持续学习、持续迭代，记录当前关注的 AI 前沿方向</p>
+            </div>
+            <div class="card-grid">
+                <div class="content-card">
+                    <div class="card-icon">📊</div>
+                    <div class="card-title-small">个人 LLM 知识库建设</div>
+                    <div style="margin-top:12px;">
+                        <div style="display:flex; justify-content:space-between; font-size:14px; color:var(--apple-gray);"><span>目标：100篇</span><span>当前：15篇（15%）</span></div>
+                        <div class="progress-bar"><div class="progress-fill" style="width:15%"></div></div>
+                        <div style="font-size:13px; color:var(--apple-gray); margin-top:8px;">本周新增：3篇 | 本周输出：1篇公众号草稿</div>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="card-icon">🤖</div>
+                    <div class="card-title-small">AI Agent 工具链实践</div>
+                    <div style="margin-top:12px;">
+                        <div style="display:flex; justify-content:space-between; font-size:14px; color:var(--apple-gray);"><span>目标：50个技能</span><span>当前：30+（60%）</span></div>
+                        <div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div>
+                        <div style="font-size:13px; color:var(--apple-gray); margin-top:8px;">本周进展：Cloudflare Pages 自动化部署</div>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="card-icon">💼</div>
+                    <div class="card-title-small">一人公司商业模式研究</div>
+                    <div style="margin-top:12px;">
+                        <div style="display:flex; justify-content:space-between; font-size:14px; color:var(--apple-gray);"><span>目标：10个案例</span><span>当前：4个（40%）</span></div>
+                        <div class="progress-bar"><div class="progress-fill" style="width:40%"></div></div>
+                        <div style="font-size:13px; color:var(--apple-gray); margin-top:8px;">深度研究：Dan Koe + Jonathan Chan</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 板块四：工具推荐 ==================== -->
+    <section id="tools" class="section section-alt">
+        <div class="narrow-container">
+            <div class="section-heading">
+                <h2 class="section-title">工具推荐 <span class="update-time">最后更新：2026-04-13</span></h2>
+                <p class="section-subtitle">实际在用的 AI 工具和效率神器，每一款都是实战验证</p>
+            </div>
+            <div class="card-grid card-grid-4">
+                <div class="tool-card"><div class="tool-icon">🤖</div><div class="tool-name">OpenClaw</div><div class="tool-tag">AI Agent 平台</div></div>
+                <div class="tool-card"><div class="tool-icon">🎭</div><div class="tool-name">扣子 Coze</div><div class="tool-tag">智能体开发</div></div>
+                <div class="tool-card"><div class="tool-icon">📝</div><div class="tool-name">Obsidian</div><div class="tool-tag">知识库前端</div></div>
+                <div class="tool-card"><div class="tool-icon">💻</div><div class="tool-name">Claude Code</div><div class="tool-tag">AI 编程</div></div>
+                <div class="tool-card"><div class="tool-icon">✏️</div><div class="tool-name">Cursor</div><div class="tool-tag">AI 代码编辑器</div></div>
+                <div class="tool-card"><div class="tool-icon">📊</div><div class="tool-name">飞书</div><div class="tool-tag">协作与数据管理</div></div>
+                <div class="tool-card"><div class="tool-icon">⚡</div><div class="tool-name">n8n</div><div class="tool-tag">自动化工作流</div></div>
+                <div class="tool-card"><div class="tool-icon">🌐</div><div class="tool-name">Vercel</div><div class="tool-tag">前端部署</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 板块五：资源库 ==================== -->
+    <section id="resources" class="section">
+        <div class="narrow-container">
+            <div class="section-heading">
+                <h2 class="section-title">资源库 <span class="update-time">最后更新：2026-04-13</span></h2>
+                <p class="section-subtitle">精选文章与参考资料，持续积累的知识资产</p>
+            </div>
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:32px;">
+                <div>
+                    <h4 style="font-size:18px; margin-bottom:16px;">📰 本周精选文章</h4>
+                    <div style="background:white; border-radius:var(--radius); padding:20px; box-shadow:var(--shadow);">
+                        <ul class="resource-list">
+                            <li class="resource-item"><div><div class="resource-title">Karpathy：LLM 知识库构建方法论</div><div class="resource-meta">#LLM #知识管理</div></div></li>
+                            <li class="resource-item"><div><div class="resource-title">扣子 Agent World：AI 的完整数字生活</div><div class="resource-meta">#Coze #AgentWorld</div></div></li>
+                            <li class="resource-item"><div><div class="resource-title">Jonathan Chan：从高管到 AI 超级个体</div><div class="resource-meta">#AI创业 #超级个体</div></div></li>
+                            <li class="resource-item"><div><div class="resource-title">AI 道歉小人：9块9的隐形金矿</div><div class="resource-meta">#AI变现 #一人公司</div></div></li>
+                            <li class="resource-item"><div><div class="resource-title">Dan Koe：一人公司完整指南</div><div class="resource-meta">#一人公司 #创作者经济</div></div></li>
+                            <li class="resource-item"><div><div class="resource-title">Meta Muse Spark：一张图复刻"豆包App"</div><div class="resource-meta">#Meta #多模态</div></div></li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <h4 style="font-size:18px; margin-bottom:16px;">📖 正在阅读</h4>
+                    <div style="background:white; border-radius:var(--radius); padding:20px; box-shadow:var(--shadow); margin-bottom:24px;">
+                        <ul class="resource-list">
+                            <li class="resource-item" style="border-bottom:1px solid #e8e8e8;"><div><div class="resource-title">Dan Koe：一人公司指南</div><div style="margin-top:8px;"><div style="display:flex; justify-content:space-between; font-size:13px; color:var(--apple-gray);"><span>阅读进度</span><span>60%</span></div><div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div></div></div></li>
+                            <li class="resource-item"><div><div class="resource-title">Hermes Agent：开源 AI 智能体</div><div style="margin-top:8px;"><div style="display:flex; justify-content:space-between; font-size:13px; color:var(--apple-gray);"><span>阅读进度</span><span>40%</span></div><div class="progress-bar"><div class="progress-fill" style="width:40%"></div></div></div></div></li>
+                        </ul>
+                    </div>
+                    <h4 style="font-size:18px; margin-bottom:16px;">📊 更新统计</h4>
+                    <div style="background:white; border-radius:var(--radius); padding:20px; box-shadow:var(--shadow);">
+                        <div class="stats-row" style="border-top:none; padding-top:0; margin-top:0;">
+                            <div class="stat-item"><div class="stat-value">12</div><div class="stat-label">本月新增</div></div>
+                            <div class="stat-item"><div class="stat-value">4</div><div class="stat-label">本周新增</div></div>
+                            <div class="stat-item"><div class="stat-value">15+</div><div class="stat-label">累计文档</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 板块六：每周总结 ==================== -->
+    <section id="weekly-summary" class="section section-alt">
+        <div class="narrow-container">
+            <div class="section-heading">
+                <h2 class="section-title">每周总结 <span class="update-time">最后更新：2026-04-13</span></h2>
+                <p class="section-subtitle">每周一篇万字深度长文，综合回顾本周知识库积累与 AI 实践心得</p>
+            </div>
+            <div class="weekly-feature">
+                <div class="weekly-header">
+                    <div class="weekly-title">Agent 时代的内容创作工作流</div>
+                    <span class="weekly-badge">第2周 · 2026-04-13</span>
+                </div>
+                <p class="weekly-abstract">基于 Karpathy 知识库方法论，结合扣子 Agent World 和 OpenClaw 5-Agent 团队实战经验，分享如何在 Agent 时代构建个人内容创作系统。</p>
+                <span class="expand-btn" onclick="toggleDetail('weekly1-detail')">阅读全文 →</span>
+                <div id="weekly1-detail" class="detail-content">
+                    <h4>📋 本周内容概览</h4>
+                    <ul>
+                        <li><strong>信息摄取</strong>：本周新增 4 篇原始文档</li>
+                        <li><strong>知识编译</strong>：4 篇文章已编译为 Wiki 格式</li>
+                        <li><strong>案例研究</strong>：新增 3 个深度案例</li>
+                        <li><strong>工具实践</strong>：Cloudflare Pages 自动化部署上线</li>
+                    </ul>
+                    <blockquote>"Agent 时代的内容创作不再是'一个人写文章'，而是'一个 Agent 团队协作产出'。"</blockquote>
+                    <p>（完整万字长文正在撰写中，预计本周日发布）</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="contact" class="section">
         <div class="narrow-container">
             <div class="section-heading">
@@ -821,7 +1178,9 @@
                 <ul class="footer-links">
                     <li><a href="#expertise">专业领域</a></li>
                     <li><a href="#experience">工作经历</a></li>
-                    <li><a href="#projects">项目展示</a></li>
+                    <li><a href="#ai-practice">AI实践</a></li>
+                    <li><a href="#case-studies">案例研究</a></li>
+                    <li><a href="#tools">工具推荐</a></li>
                     <li><a href="#contact">联系方式</a></li>
                 </ul>
                 <div class="copyright">© 2025 陈京昌（诗中） | AI解决方案与产品专家</div>
@@ -830,6 +1189,14 @@
     </footer>
     
     <script>
+        // Toggle detail content
+        function toggleDetail(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.classList.toggle('active');
+            }
+        }
+
         // Simple animation for elements as they enter the viewport
         document.addEventListener('DOMContentLoaded', function() {
             const observer = new IntersectionObserver((entries) => {
