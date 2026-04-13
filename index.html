@@ -653,6 +653,11 @@
     .content-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
     .card-icon { font-size: 36px; margin-bottom: 16px; }
     .card-title-small { font-size: 20px; font-weight: 600; margin-bottom: 8px; color: var(--apple-dark); }
+    /* SVG icon cards */
+    .icon-svg { width: 48px; height: 48px; margin-bottom: 16px; display: flex; align-items: center; justify-content: center; background: #f0f5ff; border-radius: 12px; }
+    .icon-svg svg { width: 28px; height: 28px; stroke: var(--apple-highlight); fill: none; stroke-width: 1.5; }
+    .tool-icon-text { margin-bottom: 12px; display: flex; align-items: center; justify-content: center; width: 56px; height: 56px; background: var(--apple-section-bg); border-radius: 50%; }
+    .tool-icon-text svg { width: 28px; height: 28px; stroke: var(--apple-highlight); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
     .card-desc { font-size: 15px; color: var(--apple-gray); line-height: 1.5; }
     .case-card { background: white; border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow); margin-bottom: 20px; transition: transform 0.3s ease; }
     .case-card:hover { transform: translateY(-2px); }
@@ -864,17 +869,17 @@
             </div>
             <div class="card-grid card-grid-3">
                 <a href="pages/practice-agent-team.html" class="content-card" style="text-decoration:none;color:inherit;">
-                    <div class="card-icon">🤖</div>
+                    <div class="card-icon" style="background:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230071e3' stroke-width='1.5'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3E%3C/svg%3E\") center/contain no-repeat; width:48px; height:48px;"></div>
                     <div class="card-title-small">5-Agent 团队架构</div>
                     <div class="card-desc">基于 OpenClaw 的多 Agent 协作系统，各自独立、互相配合</div>
                 </a>
                 <a href="pages/practice-knowledge-base.html" class="content-card" style="text-decoration:none;color:inherit;">
-                    <div class="card-icon">📚</div>
+                    <div class="icon-svg"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
                     <div class="card-title-small">LLM 知识库系统</div>
                     <div class="card-desc">基于 Karpathy 方法论的个人知识管理，四层架构自动编译</div>
                 </a>
                 <a href="pages/practice-toolchain.html" class="content-card" style="text-decoration:none;color:inherit;">
-                    <div class="card-icon">⚡</div>
+                    <div class="icon-svg"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
                     <div class="card-title-small">Agent 工具链</div>
                     <div class="card-desc">30+ 跨平台技能矩阵，定时任务驱动运营闭环</div>
                 </a>
@@ -892,7 +897,7 @@
             <div class="case-card">
                 <div class="case-header">
                     <h3 class="case-title">从高管到 AI 超级个体</h3>
-                    <div class="case-meta"><span>📖 8分钟阅读</span><span>2026-04-13</span></div>
+                    <div class="case-meta"><span>8分钟阅读</span><span>2026-04-13</span></div>
                 </div>
                 <p class="case-preview">Jonathan Chan，前波士顿咨询高管，25年职场经验。辞去42万美元年薪，8个月后靠 AI 月入3万美元。</p>
                 <a href="pages/case-jonathan-chan.html" class="expand-btn">阅读全文 →</a>
@@ -900,7 +905,7 @@
             <div class="case-card">
                 <div class="case-header">
                     <h3 class="case-title">扣子 Agent World：当大家把 AI 当牛马，扣子把 AI 当人</h3>
-                    <div class="case-meta"><span>📖 10分钟阅读</span><span>2026-04-13</span></div>
+                    <div class="case-meta"><span>10分钟阅读</span><span>2026-04-13</span></div>
                 </div>
                 <p class="case-preview">扣子 2.5 发布，为 Agent 配备完整数字生活设施——云电脑、云手机、邮箱、日程、视频生成……</p>
                 <a href="pages/case-coze-agent-world.html" class="expand-btn">阅读全文 →</a>
@@ -908,7 +913,7 @@
             <div class="case-card">
                 <div class="case-header">
                     <h3 class="case-title">AI 道歉小人：9块9的隐形金矿</h3>
-                    <div class="case-meta"><span>📖 6分钟阅读</span><span>2026-04-13</span></div>
+                    <div class="case-meta"><span>6分钟阅读</span><span>2026-04-13</span></div>
                 </div>
                 <p class="case-preview">卡通小人在屏幕里疯狂鞠躬道歉，卖9块9，闷声卖了几千单。看似荒谬的小需求，凭什么能成为一门好生意？</p>
                 <a href="pages/case-ai-apology.html" class="expand-btn">阅读全文 →</a>
@@ -916,7 +921,7 @@
             <div class="case-card">
                 <div class="case-header">
                     <h3 class="case-title">Dan Koe 一人公司指南</h3>
-                    <div class="case-meta"><span>📖 15分钟阅读</span><span>2026-04-13</span></div>
+                    <div class="case-meta"><span>15分钟阅读</span><span>2026-04-13</span></div>
                 </div>
                 <p class="case-preview">Dan Koe 的一人公司体系：四小时工作制、心智垄断、从0到100万的演进路径。</p>
                 <a href="pages/case-dan-koe.html" class="expand-btn">阅读全文 →</a>
@@ -933,7 +938,7 @@
             </div>
             <div class="card-grid">
                 <div class="content-card">
-                    <div class="card-icon">📊</div>
+                    <div class="icon-svg"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
                     <div class="card-title-small">个人 LLM 知识库建设</div>
                     <div style="margin-top:12px;">
                         <div style="display:flex; justify-content:space-between; font-size:14px; color:var(--apple-gray);"><span>目标：100篇</span><span>当前：15篇（15%）</span></div>
@@ -942,7 +947,7 @@
                     </div>
                 </div>
                 <div class="content-card">
-                    <div class="card-icon">🤖</div>
+                    <div class="icon-svg"><svg viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7v4a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-4a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z"/></svg></div>
                     <div class="card-title-small">AI Agent 工具链实践</div>
                     <div style="margin-top:12px;">
                         <div style="display:flex; justify-content:space-between; font-size:14px; color:var(--apple-gray);"><span>目标：50个技能</span><span>当前：30+（60%）</span></div>
@@ -951,7 +956,7 @@
                     </div>
                 </div>
                 <div class="content-card">
-                    <div class="card-icon">💼</div>
+                    <div class="icon-svg"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
                     <div class="card-title-small">一人公司商业模式研究</div>
                     <div style="margin-top:12px;">
                         <div style="display:flex; justify-content:space-between; font-size:14px; color:var(--apple-gray);"><span>目标：10个案例</span><span>当前：4个（40%）</span></div>
@@ -971,14 +976,14 @@
                 <p class="section-subtitle">实际在用的 AI 工具和效率神器，每一款都是实战验证</p>
             </div>
             <div class="card-grid card-grid-4">
-                <div class="tool-card"><div class="tool-icon">🤖</div><div class="tool-name">OpenClaw</div><div class="tool-tag">AI Agent 平台</div></div>
-                <div class="tool-card"><div class="tool-icon">🎭</div><div class="tool-name">扣子 Coze</div><div class="tool-tag">智能体开发</div></div>
-                <div class="tool-card"><div class="tool-icon">📝</div><div class="tool-name">Obsidian</div><div class="tool-tag">知识库前端</div></div>
-                <div class="tool-card"><div class="tool-icon">💻</div><div class="tool-name">Claude Code</div><div class="tool-tag">AI 编程</div></div>
-                <div class="tool-card"><div class="tool-icon">✏️</div><div class="tool-name">Cursor</div><div class="tool-tag">AI 代码编辑器</div></div>
-                <div class="tool-card"><div class="tool-icon">📊</div><div class="tool-name">飞书</div><div class="tool-tag">协作与数据管理</div></div>
-                <div class="tool-card"><div class="tool-icon">⚡</div><div class="tool-name">n8n</div><div class="tool-tag">自动化工作流</div></div>
-                <div class="tool-card"><div class="tool-icon">🌐</div><div class="tool-name">Vercel</div><div class="tool-tag">前端部署</div></div>
+                <div class="tool-card"><div class="icon-svg"><svg viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7v4a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-4a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z"/></svg></div><div class="tool-name">OpenClaw</div><div class="tool-tag">AI Agent 平台</div></div>
+                <div class="tool-card"><div class="tool-icon-text"><svg viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7v4a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-4a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z"/></svg></div><div class="tool-name">扣子 Coze</div><div class="tool-tag">智能体开发</div></div>
+                <div class="tool-card"><div class="tool-icon-text"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><div class="tool-name">Obsidian</div><div class="tool-tag">知识库前端</div></div>
+                <div class="tool-card"><div class="tool-icon-text"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><div class="tool-name">Claude Code</div><div class="tool-tag">AI 编程</div></div>
+                <div class="tool-card"><div class="tool-icon-text"><svg viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></div><div class="tool-name">Cursor</div><div class="tool-tag">AI 代码编辑器</div></div>
+                <div class="tool-card"><div class="icon-svg"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><div class="tool-name">飞书</div><div class="tool-tag">协作与数据管理</div></div>
+                <div class="tool-card"><div class="icon-svg"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><div class="tool-name">n8n</div><div class="tool-tag">自动化工作流</div></div>
+                <div class="tool-card"><div class="tool-icon-text"><svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div><div class="tool-name">Vercel</div><div class="tool-tag">前端部署</div></div>
             </div>
         </div>
     </section>
@@ -992,7 +997,7 @@
             </div>
             <div style="display:grid; grid-template-columns: 1fr 1fr; gap:32px;">
                 <div>
-                    <h4 style="font-size:18px; margin-bottom:16px;">📰 本周精选文章</h4>
+                    <h4 style="font-size:18px; margin-bottom:16px;">本周精选文章</h4>
                     <div style="background:white; border-radius:var(--radius); padding:20px; box-shadow:var(--shadow);">
                         <ul class="resource-list">
                             <li class="resource-item"><div><div class="resource-title">Karpathy：LLM 知识库构建方法论</div><div class="resource-meta">#LLM #知识管理</div></div></li>
@@ -1005,14 +1010,14 @@
                     </div>
                 </div>
                 <div>
-                    <h4 style="font-size:18px; margin-bottom:16px;">📖 正在阅读</h4>
+                    <h4 style="font-size:18px; margin-bottom:16px;">正在阅读</h4>
                     <div style="background:white; border-radius:var(--radius); padding:20px; box-shadow:var(--shadow); margin-bottom:24px;">
                         <ul class="resource-list">
                             <li class="resource-item" style="border-bottom:1px solid #e8e8e8;"><div><div class="resource-title">Dan Koe：一人公司指南</div><div style="margin-top:8px;"><div style="display:flex; justify-content:space-between; font-size:13px; color:var(--apple-gray);"><span>阅读进度</span><span>60%</span></div><div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div></div></div></li>
                             <li class="resource-item"><div><div class="resource-title">Hermes Agent：开源 AI 智能体</div><div style="margin-top:8px;"><div style="display:flex; justify-content:space-between; font-size:13px; color:var(--apple-gray);"><span>阅读进度</span><span>40%</span></div><div class="progress-bar"><div class="progress-fill" style="width:40%"></div></div></div></div></li>
                         </ul>
                     </div>
-                    <h4 style="font-size:18px; margin-bottom:16px;">📊 更新统计</h4>
+                    <h4 style="font-size:18px; margin-bottom:16px;">更新统计</h4>
                     <div style="background:white; border-radius:var(--radius); padding:20px; box-shadow:var(--shadow);">
                         <div class="stats-row" style="border-top:none; padding-top:0; margin-top:0;">
                             <div class="stat-item"><div class="stat-value">12</div><div class="stat-label">本月新增</div></div>
@@ -1040,7 +1045,7 @@
                 <p class="weekly-abstract">基于 Karpathy 知识库方法论，结合扣子 Agent World 和 OpenClaw 5-Agent 团队实战经验，分享如何在 Agent 时代构建个人内容创作系统。</p>
                 <span class="expand-btn" onclick="toggleDetail('weekly1-detail')">阅读全文 →</span>
                 <div id="weekly1-detail" class="detail-content">
-                    <h4>📋 本周内容概览</h4>
+                    <h4>本周内容概览</h4>
                     <ul>
                         <li><strong>信息摄取</strong>：本周新增 4 篇原始文档</li>
                         <li><strong>知识编译</strong>：4 篇文章已编译为 Wiki 格式</li>
